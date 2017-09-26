@@ -1,9 +1,9 @@
 # Copyright 2017, Oracle Corporation and/or affiliates.  All rights reserved.
 
 box: 
-  id: quay.io/markxnelson/weblogic
-  username: $QUAY_IO_USERNAME
-  password: $QUAY_IO_PASSWORD
+  id: maciejgruszka/weblogic
+  username: $DOCKER_IO_USERNAME
+  password: $DOCKER_IO_PASSWORD
   tag: 12.2.1.2
 
 build:
@@ -30,9 +30,9 @@ build:
           cp $WERCKER_SOURCE_DIR/create-users.sql /u01/oracle/create-users.sql
           cp $WERCKER_SOURCE_DIR/create-schema.sql /u01/oracle/create-schema.sql
     - internal/docker-push:
-        username: $QUAY_IO_USERNAME
-        password: $QUAY_IO_PASSWORD
-        repository: quay.io/markxnelson/weblogic
+        username: $DOCKER_IO_USERNAME
+        password: $DOCKER_IO_PASSWORD
+        repository: maciejgruszka/weblogic
         tag: licenseplates
         ports: "7001"
         entrypoint: "/u01/oracle/entrypoint.sh"
