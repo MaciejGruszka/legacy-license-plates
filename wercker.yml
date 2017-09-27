@@ -49,13 +49,38 @@ deploy-to-cluster:
         server: $KUBERNETES_MASTER
         token: $KUBERNETES_TOKEN
         insecure-skip-tls-verify: true
-        command: delete deployment rest-inventory
+        command: create -f $WERCKER_ROOT/database-deployment.yaml
+        
+    - kubectl:
+        server: $KUBERNETES_MASTER
+        token: $KUBERNETES_TOKEN
+        insecure-skip-tls-verify: true
+        command: create -f $WERCKER_ROOT/database-service.yaml
 
     - kubectl:
         server: $KUBERNETES_MASTER
         token: $KUBERNETES_TOKEN
         insecure-skip-tls-verify: true
-        command: create -f $WERCKER_ROOT/inventory-deployment.yaml
+        command: create -f $WERCKER_ROOT/weblogic-service.yaml
+        
+    - kubectl:
+        server: $KUBERNETES_MASTER
+        token: $KUBERNETES_TOKEN
+        insecure-skip-tls-verify: true
+        command: create -f $WERCKER_ROOT/weblogic-service.yaml
+        
+    - kubectl:
+        server: $KUBERNETES_MASTER
+        token: $KUBERNETES_TOKEN
+        insecure-skip-tls-verify: true
+        command: expose deployment weblogic --type=LoadBalancer --name=oow-load-balancer
+        
+    - kubectl:
+        server: $KUBERNETES_MASTER
+        token: $KUBERNETES_TOKEN
+        insecure-skip-tls-verify: true
+        command: describe service oow-load-balancer
+        
 
  
 
