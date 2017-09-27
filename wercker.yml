@@ -25,8 +25,8 @@ build:
     - script:
         code: |
           export WEBLOGIC_STEP_CONFIG=$WERCKER_SOURCE_DIR/weblogic-config.json
-          $WERCKER_SOURCE_DIR/run.sh
-          
+          chmod +x $WERCKER_SOURCE_DIR/run.sh
+          $WERCKER_SOURCE_DIR/run.sh      
     - script:
         name: "Copy the DDL statements into place"
         code: |
