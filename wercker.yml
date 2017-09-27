@@ -22,8 +22,11 @@ build:
            echo "No internet access. Will use the prebuilt war"
          fi 
          cp target/licenseplates.war /u01/oracle/.
-    - iron/weblogic-step@0.1.24:
-        config: weblogic-config.json
+    - script:
+        code: |
+          export WEBLOGIC_STEP_CONFIG=$WERCKER_SOURCE_DIR/weblogic-config.json
+          $WERCKER_SOURCE_DIR/run.sh
+          
     - script:
         name: "Copy the DDL statements into place"
         code: |
