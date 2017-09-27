@@ -21,7 +21,7 @@ spec:
       - name: weblogic
         command: 
         - /u01/oracle/entrypoint.sh
-        image: registry-alpha.oracledx.com/MaciejGruszka/wls-license-plates
+        image: registry-alpha.oracledx.com/maciejgruszka/wls-license-plates
         ports:
         - containerPort: 7001
           hostPort: 7001
