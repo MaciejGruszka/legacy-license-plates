@@ -11,9 +11,6 @@ mkdir -p /u01/oracle/domains
 echo "Create applications directory"
 mkdir -p /u01/oracle/applications
 
-echo "Checking we can run wlst"
-$WLST $WERCKER_SOURCE_DIR/test.py
-
 echo "Creating the basic domain"
 $WLST $WERCKER_SOURCE_DIR/create-domain.py
 
